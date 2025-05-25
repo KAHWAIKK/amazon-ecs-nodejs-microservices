@@ -1,0 +1,77 @@
+ Create the monolith AWS Copilot Service
+A Copilot Service runs containers. Internet-facing services can be a Request-Driven Web Service that uses AWS App Runner or a Load Balanced Web Service that provisions an Application or Network Load Balancer with appropriate security groups, and runs on Amazon ECS or Fargate.
+
+Other Service types include a Backend Service that lets AWS services communicate within the application but not to the Internet. A Worker Service is used for asynchronous service-to-service messaging with Amazon Simple Queue Service (Amazon SQS).
+
+This tutorial uses a Load Balanced Web Service for the Internet-facing monolith. To create the monolithic service, enter copilot svc init and choose Load Balanced Web Service.
+
+✅ 1. copilot app init
+Initializes a new Copilot application.
+
+Creates resources like ECR repos, IAM roles, and S3 buckets.
+
+Sets up a local configuration directory.
+📁 Example:
+
+bash
+Copy
+Edit
+copilot app init
+
+
+✅ 2. copilot env init
+Creates a new environment (e.g., dev, staging, prod).
+
+Provisions a VPC, ECS Cluster, Subnets, Load Balancer, IAM roles.
+
+Stores environment settings in a manifest file.
+📁 Example:
+
+bash
+Copy
+Edit
+copilot env init
+
+
+✅ 3. copilot env deploy --name <env-name>
+Deploys the previously initialized environment.
+
+Sets up networking, DNS, security groups, internet access, etc.
+📁 Example:
+
+bash
+Copy
+Edit
+copilot env deploy --name api
+
+
+✅ 4. copilot svc init
+Creates a Copilot service (like a containerized web app).
+
+Prompts for workload type (e.g., Load Balanced Web Service).
+
+Links to your Dockerfile to define the container.
+📁 Example:
+
+bash
+Copy
+Edit
+
+copilot svc init
+✅ 5. copilot svc deploy --name <service-name>
+Deploys a service to the specified environment.
+
+Builds Docker image locally.
+
+Pushes image to ECR.
+
+Provisions ECS Service, Load Balancer, IAM roles, etc.
+📁 Example:
+
+bash
+Copy
+Edit
+copilot svc deploy --name monolith
+
+
+These five commands are the core steps to deploy a containerized application with AWS Copilot, going from setup to live deployment.
