@@ -1,0 +1,1 @@
+n AWS Copilot, instead of using the interactive menu to deploy services, you can deploy them directly using flags with the copilot svc init command. This is especially useful for scripting and automating deployments.
